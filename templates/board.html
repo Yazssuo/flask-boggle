@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Boggle{% endblock %}
+
+{% block content %}
+
+<h1>dboggle game :)</h1>
+
+<h4 id="timer">Time Left: 60</h4>
+<h4 id="score">Score: 0</h4>
+<h4>Highest Score: {{ session['highestscore'] }}</h4>
+<h4>Times Played: {{ session['played'] }}</h4>
+
+<table>
+    {% for row in board %}
+        <tr>
+            {% for data in row %}
+                <td>{{ data }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+<form id="responseform">
+    <p>Guess word here:</p>
+    <input type="text" name="response" id="userresponse">
+    <button id="submitbtn">Submit</button>
+</form>
+
+<h3>Game log:</h3>
+<ul id="gamelog"></ul>
+
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script src="../static/board.js"></script>
+
+{% endblock %}
